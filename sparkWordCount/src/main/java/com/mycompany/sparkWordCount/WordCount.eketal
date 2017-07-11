@@ -9,78 +9,18 @@ eventclass WordCount{
 	}
 	
 	automaton seqEventDetector(){
- 		start initialState: (mostrar1 -> secondState)||(mostrar2 -> deadState)||(mostrar3 -> deadState)||(mostrar4 -> deadState)||(mostrar5 -> deadState);
- 		secondState: (mostrar1 -> deadState)||(mostrar2 -> thirdState)||(mostrar3 -> deadState)||(mostrar4 -> deadState)||(mostrar5 -> deadState);
- 		thirdState: (mostrar1 -> deadState)||(mostrar2 -> deadState)||(mostrar3 -> fourState)||(mostrar4 -> deadState)||(mostrar5 -> deadState);
- 		fourState: (mostrar1 -> deadState)||(mostrar2 -> deadState)||(mostrar3 -> deadState)||(mostrar4 -> fiveState)||(mostrar5 -> deadState);
- 		fiveState: (mostrar1 -> deadState)||(mostrar2 -> deadState)||(mostrar3 -> deadState)||(mostrar4 -> deadState)||(mostrar5 -> finalState);
- 		deadState: (mostrar1 -> deadState)||(mostrar2 -> deadState)||(mostrar3 -> deadState)||(mostrar4 -> deadState)||(mostrar5 -> deadState);
- 		end finalState: (mostrar6 -> finalState);
+ 		start initialState: (mostrar2 -> finalState);
+ 		end finalState;
  	}
 
-	event mostrar1(): execution(* com.mycompany.sparkWordCount.JavaWordCount.javaRDD(SparkSession, String)) && host(localGroup);
+
 	event mostrar2(): execution(* com.mycompany.sparkWordCount.JavaWordCount.flatMap(JavaRDD<String>)) && host(localGroup);
-	event mostrar3(): execution(* com.mycompany.sparkWordCount.JavaWordCount.mapToPair(JavaRDD<String>)) && host(localGroup);
-	event mostrar4(): execution(* com.mycompany.sparkWordCount.JavaWordCount.reduceByKey(JavaPairRDD<String, Integer>)) && host(localGroup);
-	event mostrar5(): execution(* com.mycompany.sparkWordCount.JavaWordCount.collect(JavaPairRDD<String, Integer>)) && host(localGroup);
-	event mostrar6(): execution(* com.mycompany.sparkWordCount.JavaWordCount.print(String)) && host(localGroup);
-		
-	reaction before seqEventDetector.deadState{
-		String msg = "DEAD STATE";
-		System.out.println();
-		System.out.println("----------------------------------------");
-		System.out.println("----------------------------------------");
-		System.out.println(msg);
-		System.out.println("----------------------------------------");
-		System.out.println("----------------------------------------");
-		System.out.println();
-	}	
+
 		
 		
-		
- 	reaction before seqEventDetector.initialState{
-		String msg = "Reaction detected initialState  -----  Cargando RDD";
-		System.out.println();
-		System.out.println("--------------------------------------------------------------------");
-		System.out.println(msg);
-		System.out.println("--------------------------------------------------------------------");
-		System.out.println();
-	}
-	
+
 	reaction before seqEventDetector.secondState{
 		String msg = "Reaction detected secondState  -----  Separando palabras";
-		System.out.println();
-		System.out.println("--------------------------------------------------------------------");
-		System.out.println(msg);
-		System.out.println("--------------------------------------------------------------------");
-		System.out.println();
-	}
-	reaction before seqEventDetector.thirdState{
-		String msg = "Reaction detected thirdState  -----  Creando tuplas por palabras";
-		System.out.println();
-		System.out.println("--------------------------------------------------------------------");
-		System.out.println(msg);
-		System.out.println("--------------------------------------------------------------------");
-		System.out.println();
-	}
-	reaction before seqEventDetector.fourState{
-		String msg = "Reaction detected fourState  -----  Sumando las palabras repetidas";
-		System.out.println();
-		System.out.println("--------------------------------------------------------------------");
-		System.out.println(msg);
-		System.out.println("--------------------------------------------------------------------");
-		System.out.println();
-	}
-	reaction before seqEventDetector.fiveState{
-		String msg = "Reaction detected fiveState  -----  Sumando las palabras repetidas";
-		System.out.println();
-		System.out.println("--------------------------------------------------------------------");
-		System.out.println(msg);
-		System.out.println("--------------------------------------------------------------------");
-		System.out.println();
-	}
-	reaction before seqEventDetector.finalState{
-		String msg = "Reaction detected finalState  Mostrando Resultado";
 		System.out.println();
 		System.out.println("--------------------------------------------------------------------");
 		System.out.println(msg);
