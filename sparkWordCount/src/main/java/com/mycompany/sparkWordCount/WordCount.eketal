@@ -9,18 +9,14 @@ eventclass WordCount{
 	}
 	
 	automaton seqEventDetector(){
- 		start initialState: (mostrar2 -> finalState);
- 		end finalState;
+ 		start initialState: (mostrar6 -> finalState)
+ 		end finalState: (mostrar6 -> finalState);
  	}
 
-
-	event mostrar2(): execution(* com.mycompany.sparkWordCount.JavaWordCount.flatMap(JavaRDD<String>)) && host(localGroup);
-
+	event mostrar6(): execution(* com.mycompany.sparkWordCount.JavaWordCount.print(String)) && host(localGroup);
 		
-		
-
-	reaction before seqEventDetector.secondState{
-		String msg = "Reaction detected secondState  -----  Separando palabras";
+	reaction before seqEventDetector.finalState{
+		String msg = "Reaction detected finalState  Mostrando Resultado";
 		System.out.println();
 		System.out.println("--------------------------------------------------------------------");
 		System.out.println(msg);
