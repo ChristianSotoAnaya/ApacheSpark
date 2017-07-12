@@ -22,7 +22,7 @@ public class Main {
 		JavaWordCount.collect(counts);
 		//System.out.println("------------------- Deteniendo Spark ---------------------");
 		spark.stop();
-		
+		System.exit(0);
 		
 
 	}

@@ -12,10 +12,10 @@ From: /PATH_TO_SPARK/spark-2.1.1-bin-hadoop2.7:
 
 #Run the Word Count example
 From: /PATH_TO_SPARK/spark-2.1.1-bin-hadoop2.7/bin:
-MASTER=spark://10.2.67.74:7077 ./run-example JavaWordCount /PATH_TO_TEST/TEST.txt
+./bin/spark-submit --class com.mycompany.sparkWordCount.Main --master spark://YOUR_IP_MASTER:7077 /PATH_TO_PROJECT/ApacheSpark/sparkWordCount/target/SparkWordCount-1.0-SNAPSHOT-jar-with-dependencies.jar /PATH_TO_PROJECT/ApacheSpark/Test/small.txt
 
 
 --------------------------------------------------------------------------------------------------------------
 #Run NUM times the Word Count example
 From: /PATH_TO_SPARK/spark-2.1.1-bin-hadoop2.7/bin:
-for i in {1..NUM}; do MASTER=spark://10.2.67.74:7077 ./run-example JavaWordCount /PATH_TO_TEST/TEST.txt; done
+for i in {1..NUM}; do ./bin/spark-submit --class com.mycompany.sparkWordCount.Main --master spark://YOUR_IP_MASTER:7077 /PATH_TO_PROJECT/ApacheSpark/sparkWordCount/target/SparkWordCount-1.0-SNAPSHOT-jar-with-dependencies.jar /PATH_TO_PROJECT/ApacheSpark/Test/small.txt; done
