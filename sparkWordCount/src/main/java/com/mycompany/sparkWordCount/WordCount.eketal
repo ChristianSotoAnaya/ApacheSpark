@@ -19,7 +19,7 @@ eventclass WordCount{
 		
 		
 
-	reaction before seqEventDetector.secondState{
+	reaction before seqEventDetector.finalState{
 		String msg = "Reaction detected secondState  -----  Separando palabras";
 		System.out.println();
 		System.out.println("--------------------------------------------------------------------");
