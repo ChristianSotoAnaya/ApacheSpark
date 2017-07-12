@@ -9,7 +9,7 @@ eventclass WordCount{
 	}
 	
 	automaton seqEventDetector(){
- 		start initialState: (mostrar6 -> finalState)
+ 		start initialState: (mostrar6 -> finalState);
  		end finalState: (mostrar6 -> finalState);
  	}
 
