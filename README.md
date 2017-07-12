@@ -11,7 +11,7 @@ A continuación, se mostrará en los siguientes pasos como preparar apache spark
 
 2) Ahora que el maestro está corriendo continuamos a conectar los trabajadores, para esto en la carpeta "spark-2.1.1-bin-hadoop2.7" ejecutar: "./bin/spark-class org.apache.spark.deploy.worker.Worker spark://YOUR_IP_MASTER:7077", se pueden conectar tantos trabajadores como equipos se disponga.
 
-3) Luego de conectar a los trabajadores ya podemos ejecutar la aplicación, en la carpeta: "spark-2.1.1-bin-hadoop2.7/bin", ejecutar: "MASTER=spark://YOUR_IP_MASTER:7077 ./run-example JavaWordCount /PATH_TO_PROJECT/ApacheSpark/Test/small.txt
+3) Luego de conectar a los trabajadores ya podemos ejecutar la aplicación, en la carpeta: "spark-2.1.1-bin-hadoop2.7", ejecutar: "./bin/spark-submit --class com.mycompany.sparkcount.Main --master spark://YOUR_IP_MASTER:7077 /PATH_TO_PROJECT/ApacheSpark/SparkCount/target/SparkCount-1.0-SNAPSHOT.jar /PATH_TO_PROJECT/ApacheSpark/Test/small.txt"
 
 
 # Nota
